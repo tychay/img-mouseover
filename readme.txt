@@ -1,4 +1,4 @@
-=== Local Time ===
+=== IMG Mouseover ===
 Contributors: tychay
 Donate link: http://www.kiva.org/lender/tychay
 Tags: images, mouseover
@@ -13,10 +13,11 @@ Embed a mouseover image into a regular image tag without resorting to hacky inli
 This allows you to create a simple image mouseover feature by adding properties to an image:
 
 It understands the following properties:
-*	img.class="mouseover" (activates IMG mouseover for this iagme)
-*	img.oversrc (If specified, this rewrites the image on mouse rollover)
-*	img.clicksrc (If specified, this rewrites the image on mouse click)
-*	img.noresize (If set, this will make the image have the natural dimensions instead of the dimensions of the original image).
+
+* img.class="mouseover" (activates IMG mouseover for this iagme)
+* img.oversrc (If specified, this rewrites the image on mouse rollover)
+* img.clicksrc (If specified, this rewrites the image on mouse click)
+* img.noresize (If set, this will make the image have the natural dimensions instead of the dimensions of the original image).
 
 == Installation ==
 
