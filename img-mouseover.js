@@ -1,11 +1,66 @@
 jQuery(document).ready(function($) { /* document.ready */
 	$('img.mouseover').each(function() {
+		// {{{ - switchMouseover(link)
+		this.switchMouseover = function(link) {
+			if (this.linkSelected) {
+				if (this.linkSelected == link) {
+					// restore original value {{{
+					this.src = this.originalObj.src;
+					this.outSrc = this.originalObj.outSrc;
+					this.title = this.originalObj.title;
+					this.overImg = this.originalObj.overImg;
+					this.clickImg = this.originalObj.clickImg;
+					this.linkSelected = null;
+					// }}}
+					return false;
+				} else {
+					$(this.linkSelected).removeClass('selected');
+				}
+			} else {
+				// save original value {{{
+				this.originalObj = {
+					src: this.src,
+					outSrc: this.src,
+					title: this.title,
+					overImg: this.overImg,
+					clickImg: this.clickImg
+					};
+				// }}}
+			}
+			this.linkSelected = link;
+			var attr = link.getAttribute('src');
+			if (attr) {
+				this.src = attr;
+				this.outSrc = attr;
+			}
+			var attr = link.getAttribute('title');
+			if (attr) {
+				this.title = attr;
+			}
+			var attr = link.getAttribute('oversrc');
+			if (attr) {
+				this.overImg = new Image();
+				this.overImg.src = attr;
+			} else {
+				this.overImg = null;
+			}
+			var attr = link.getAttribute('clicksrc');
+			if (attr) {
+				this.clickImg = new Image();
+				this.clickImg.src = attr;
+			} else {
+				this.clickImg = null;
+			}
+			return true;
+		};
+		// }}}
 		// initialize mouseovers {{{
 		var img_url = this.getAttribute('oversrc');
-		if (!img_url) { return; } // no oversrc specified
-		// preload image
-		this.overImg = new Image();
-		this.overImg.src = img_url;
+		if (img_url) {
+			// preload image
+			this.overImg = new Image();
+			this.overImg.src = img_url;
+		}
 		var click_img_url = this.getAttribute('clicksrc');
 		if (click_img_url) {
 			this.clickImg = new Image();
@@ -42,5 +97,29 @@ jQuery(document).ready(function($) { /* document.ready */
 		this.height = this.clickImg.height;
 		return false;
 		// }}}
+	});
+	$('a.mouseover').click(function() {
+		var attr = this.getAttribute('for');
+		if (attr) {
+			var img = document.getElementById(attr);
+			if (img.switchMouseover(this)) {
+				$(this).addClass('selected');
+				var attr = this.getAttribute('for_link');
+				if (attr) {
+					var link = document.getElementById(attr);
+					link.old_href = link.getAttribute('href');
+					link.setAttribute('href',this.getAttribute('href'));
+				}
+			} else {
+				$(this).removeClass('selected');
+				var attr = this.getAttribute('for_link');
+				if (attr) {
+					var link = document.getElementById(attr);
+					link.setAttribute('href',link.old_href);
+					link.old_href = '';
+				}
+			}
+		}
+		return false;
 	});
 });
