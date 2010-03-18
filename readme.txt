@@ -34,6 +34,10 @@ Extract all files from the ZIP file, making sure to keep the file structure inta
 
 == ChangeLog ==
 
+**Version 1.2**
+
+* Fixed bug that required PHP 5 in order to run.
+
 **Version 1.1**
 
 * Support for link controllers
