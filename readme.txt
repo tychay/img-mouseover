@@ -34,6 +34,9 @@ Extract all files from the ZIP file, making sure to keep the file structure inta
 
 == ChangeLog ==
 
+**Version 1.3**
+* TinyMCE (Visual Editor) no longer does a number on the data.
+
 **Version 1.2**
 
 * Fixed bug that required PHP 5 in order to run.
