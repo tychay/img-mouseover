@@ -3,7 +3,7 @@ Contributors: tychay
 Donate link: http://www.kiva.org/lender/tychay
 Tags: images, mouseover
 Requires at least: 2.9
-Tested up to: 2.9
+Tested up to: 3.0
 Stable tag: trunk
 
 Embed a mouseover image into a regular image tag without resorting to hacky inline Javascript.
@@ -12,7 +12,7 @@ Embed a mouseover image into a regular image tag without resorting to hacky inli
 
 This allows you to create a simple image mouseover feature by adding properties to an image:
 
-It understands the following properties:
+It understands the following attributes which can be added to the HTML:
 
 * img.class="mouseover" (activates IMG mouseover for this image)
 * img.oversrc (If specified, this rewrites the image on mouse rollover)
@@ -24,6 +24,7 @@ It understands the following properties:
 * a.src (If specified, the click will replace the image with this)
 * a.oversrc (If specified, the click will replace the image mouse rollover with this)
 * a.clicksrc (If specified, the click will replace the image mouse click with this)
+
 == Installation ==
 
 ###Installing The Plugin###
@@ -34,8 +35,15 @@ Extract all files from the ZIP file, making sure to keep the file structure inta
 
 == ChangeLog ==
 
+**Version 1.4**
+
+* HTML 5 compliant (no need to change your code, but you may need to clear supercache) as per new dataset attributes
+* Added GPL 2 license to code.
+* Updated documentation to note testing on WordPress 3.0
+
 **Version 1.3**
-* TinyMCE (Visual Editor) no longer does a number on the data.
+
+* TinyMCE (Visual Editor) no longer munges the HTML code
 
 **Version 1.2**
 
