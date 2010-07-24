@@ -3,7 +3,7 @@
 
 Plugin Name:  Image Mouseover
 Plugin URI:   http://terrychay.com/wordpress-plugins/img-mouseover/
-Version:      1.3
+Version:      1.3.1
 Description:  Allows you to have img mouseovers on the page without resorting to javascript. Just class="mouseover" data-oversrc="URL_TO_MOUSEOVER" 
 Author:       tychay
 Author URI:   http://terrychay.com/
@@ -30,7 +30,7 @@ class ImgMouseover {
 		$default_img     = 'longdesc|usemap|src|border|alt=|title|hspace|vspace|width|height|align|';
 		$add_img         = 'oversrc|clicksrc|noresize';
 		$default_a       = 'rel|rev|charset|hreflang|tabindex|accesskey|type|name|href|target|title|class|onfocus|onblur|';
-		$add_a           = 'for|for_link';
+		$add_a           = 'for|for_link|src|oversrc';
 		if ( empty( $inits['extended_valid_elements'] ) ) {
 			$inits['extended_valid_elements'] =
 				'img['.$default_globals.$default_img.$add_img.']' .
