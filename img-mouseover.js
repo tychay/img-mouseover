@@ -29,6 +29,7 @@ jQuery(document).ready(function($) { /* document.ready */
 			}
 			this.linkSelected = link;
 			var attr = link.getAttribute('data-src');
+			if (!attr) { attr = link.getAttribute('src'); }
 			if (attr) {
 				this.src = attr;
 				this.outSrc = attr;
@@ -38,6 +39,7 @@ jQuery(document).ready(function($) { /* document.ready */
 				this.title = attr;
 			}
 			var attr = link.getAttribute('data-oversrc');
+			if (!attr) { attr = link.getAttribute('oversrc'); }
 			if (attr) {
 				this.overImg = new Image();
 				this.overImg.src = attr;
@@ -45,6 +47,7 @@ jQuery(document).ready(function($) { /* document.ready */
 				this.overImg = null;
 			}
 			var attr = link.getAttribute('data-clicksrc');
+			if (!attr) { attr = link.getAttribute('clicksrc'); }
 			if (attr) {
 				this.clickImg = new Image();
 				this.clickImg.src = attr;
@@ -56,18 +59,21 @@ jQuery(document).ready(function($) { /* document.ready */
 		// }}}
 		// preload mouseover images{{{
 		var img_url = this.getAttribute('data-oversrc');
+		if (!img_url) { img_url = this.getAttribute('oversrc'); }
 		if (img_url) {
 			// preload image
 			this.overImg = new Image();
 			this.overImg.src = img_url;
 		}
 		var click_img_url = this.getAttribute('data-clicksrc');
+		if (!click_img_url) { click_img_url = this.getAttribute('clicksrc'); }
 		if (click_img_url) {
 			this.clickImg = new Image();
 			this.clickImg.src = click_img_url;
 		}
 		// cache values
 		this.noresize = (this.getAttribute('data-noresize'));
+		if (!this.noresize) { this.noresize = this.getAttribute('noresize'); }
 		this.outSrc = this.src;
 		this.outWidth = this.width;
 		this.outHeight = this.height;
@@ -100,6 +106,7 @@ jQuery(document).ready(function($) { /* document.ready */
 	});
 	$('a.mouseover').click(function() {
 		var attr = this.getAttribute('data-for');
+		if (!attr) { attr = this.getAttribute('for'); }
 		if (attr) {
 			var img = document.getElementById(attr);
 			if (img.switchMouseover(this)) {
@@ -113,6 +120,7 @@ jQuery(document).ready(function($) { /* document.ready */
 			} else {
 				$(this).removeClass('selected');
 				var attr = this.getAttribute('data-for_link');
+				if (!attr) { attr = this.getAttribute('for_link'); }
 				if (attr) {
 					var link = document.getElementById(attr);
 					link.setAttribute('href',link.old_href);

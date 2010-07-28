@@ -35,6 +35,10 @@ Extract all files from the ZIP file, making sure to keep the file structure inta
 
 == ChangeLog ==
 
+**Version 1.4.1**
+
+* Fixed bug where mouseovers broke in version 1.4 when they are placed outside of post_content (for instance, in a widget). Note that these cannot be made HTML5 compliant (currently). (Thanks, FlowerLark for helping me find the bug.)
+
 **Version 1.4**
 
 * HTML 5 compliant (no need to change your code, but you may need to clear supercache) as per new dataset attributes
