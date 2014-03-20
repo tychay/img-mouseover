@@ -3,13 +3,13 @@
 
 Plugin Name:  Image Mouseover
 Plugin URI:   http://terrychay.com/wordpress-plugins/img-mouseover/
-Version:      1.4.1
+Version:      1.4.2
 Description:  Allows you to have img mouseovers on the page without resorting to javascript. Just class="mouseover" data-oversrc="URL_TO_MOUSEOVER" 
 Author:       tychay
 Author URI:   http://terrychay.com/
 
 **************************************************************************/
-/*  Copyright 2010  terry chay  (email : tychay@automattic.com)
+/*  Copyright 2010-2011  terry chay  (email : tychay@automattic.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as 
@@ -27,7 +27,7 @@ Author URI:   http://terrychay.com/
 class ImgMouseover {
 	 function init() {
 		// Load the locale script
-		wp_enqueue_script( 'img-mouseover', plugins_url( 'img-mouseover.js', __FILE__ ) , array( 'jquery' ), '20100209' );
+		wp_enqueue_script( 'img-mouseover', plugins_url( 'img-mouseover.js', __FILE__ ) , array( 'jquery' ), '20110509' );
 	}
 
 	/**

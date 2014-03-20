@@ -5,11 +5,12 @@ jQuery(document).ready(function($) { /* document.ready */
 			if (this.linkSelected) {
 				if (this.linkSelected == link) {
 					// restore original value {{{
-					this.src = this.originalObj.src;
-					this.outSrc = this.originalObj.outSrc;
-					this.title = this.originalObj.title;
-					this.overImg = this.originalObj.overImg;
-					this.clickImg = this.originalObj.clickImg;
+					this.src          = this.originalObj.src;
+					this.outSrc       = this.originalObj.outSrc;
+					this.title        = this.originalObj.title;
+					this.overImg      = this.originalObj.overImg;
+					this.clickImg     = this.originalObj.clickImg;
+					this.animateData  = this.originalObj.animateData;
 					this.linkSelected = null;
 					// }}}
 					return false;
@@ -19,11 +20,12 @@ jQuery(document).ready(function($) { /* document.ready */
 			} else {
 				// save original value {{{
 				this.originalObj = {
-					src: this.src,
-					outSrc: this.src,
-					title: this.title,
-					overImg: this.overImg,
-					clickImg: this.clickImg
+					src:         this.src,
+					outSrc:      this.src,
+					title:       this.title,
+					overImg:     this.overImg,
+					clickImg:    this.clickImg,
+					animateData: this.animateData
 					};
 				// }}}
 			}
@@ -54,10 +56,15 @@ jQuery(document).ready(function($) { /* document.ready */
 			} else {
 				this.clickImg = null;
 			}
+			var attr = link.getAttribute('data-animate');
+			if (!attr) { attr = link.getAttribute('animate'); }
+			if (attr) {
+				this.animateData = attr;
+			}
 			return true;
 		};
 		// }}}
-		// preload mouseover images{{{
+		// preload mouseover images & data {{{
 		var img_url = this.getAttribute('data-oversrc');
 		if (!img_url) { img_url = this.getAttribute('oversrc'); }
 		if (img_url) {
@@ -81,6 +88,9 @@ jQuery(document).ready(function($) { /* document.ready */
 	}).mouseover(function() {
 		// handle mouseover {{{
 		if (!this.overImg) { return; }
+		if (this.animateData) {
+			$(this).stop().fadeTo('slow', 1.0);
+		}
 		this.src = this.overImg.src;
 		if (!this.noresize) { return; }
 		this.width = this.overImg.width;
